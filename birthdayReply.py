@@ -26,16 +26,17 @@ print str(len(wallposts)) + " to handle"
 baseUrl = "https://graph.facebook.com/"
 count = 1
 for wallpost in wallposts:
-    url = baseUrl + '%s/comments' % wallpost['post_id']
-    likesUrl = baseUrl + str(wallpost['post_id']) + "/likes/?access_token=" + accessToken + "&method=POST"
-    requests.post(likesUrl)
-    #Add as many replies you want inside this list.
-    #Make sure to change the randint() method's second parameter
-    #with the number of replies - 1.
-    messages = [ 'Thank you :)', 'Thanks :)'] 
-    comment = {'access_token': accessToken, 'message': messages[randint(0,1)]}
-    s = requests.post(url, data = wishes)
-    print "Wall post %d done" % count
-    count += 1
-
+    forCheck = wallpost['message'].split()
+    if set(['happy', 'happiee', 'hbd', 'HBD', 'bday', 'birthday', 'returns']).intersection(set(forCheck)) > 0:
+        url = baseUrl + '%s/comments' % wallpost['post_id']
+        likesUrl = baseUrl + str(wallpost['post_id']) + "/likes/?access_token=" + accessToken + "&method=POST"
+        requests.post(likesUrl)
+        #Add as many replies you want inside this list.
+        #Make sure to change the randint() method's second parameter
+        #with the number of replies - 1.
+        messages = [ 'Thank you :)', 'Thanks :)'] 
+        comment = {'access_token': accessToken, 'message': messages[randint(0,1)]}
+        requests.post(url, data = comment)
+        print "Wall post %d done" % count
+        count += 1
 
