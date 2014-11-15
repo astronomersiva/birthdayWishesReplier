@@ -17,8 +17,8 @@ query = " SELECT post_id, actor_id, created_time, message FROM stream WHERE \
                 created_time > " + str(timeStamp) + " LIMIT 200 "
 
 
-comment = {'access_token': accessToken, 'q': query}
-r = requests.get('https://graph.facebook.com/fql', params = comment)
+wishes = {'access_token': accessToken, 'q': query}
+r = requests.get('https://graph.facebook.com/fql', params = wishes)
 result = json.loads(r.text)
 wallposts = result['data']
 
@@ -34,7 +34,7 @@ for wallpost in wallposts:
     #with the number of replies - 1.
     messages = [ 'Thank you :)', 'Thanks :)'] 
     comment = {'access_token': accessToken, 'message': messages[randint(0,1)]}
-    s = requests.post(url, data = comment)
+    s = requests.post(url, data = wishes)
     print "Wall post %d done" % count
     count += 1
 
