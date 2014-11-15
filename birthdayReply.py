@@ -12,9 +12,9 @@ timeStamp =  InsertUTCTimeStampHere(eg.1415994915)
 accessToken = 'Access token here. Do not delete the quotes.'
 
 
-query = (" SELECT post_id, actor_id, created_time, message FROM stream WHERE \
+query = " SELECT post_id, actor_id, created_time, message FROM stream WHERE \
                 filter_key = 'others' AND source_id = me() AND \
-                created_time > " + str(timeStamp) + " LIMIT 200 ")
+                created_time > " + str(timeStamp) + " LIMIT 200 "
 
 
 comment = {'access_token': accessToken, 'q': query}
