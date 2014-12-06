@@ -2,6 +2,9 @@ import requests
 import json
 from random import randint
 
+#Needs the requests module.
+#Use (sudo) pip install requests 
+
 #http://www.timestampgenerator.com/
 #Use this link to generate the timeStamp.
 timeStamp =  InsertUTCTimeStampHere(eg.1415994915)
